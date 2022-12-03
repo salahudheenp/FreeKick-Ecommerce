@@ -1,0 +1,93 @@
+
+<div class="row" style="margin-top:130px;">
+  <!--Middle Part Start-->
+  <div id="content" class="col-sm-9" style="margin-left:200px" >
+    <h2 class="title">Order History</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead style="background-color:cadetblue ;color:aliceblue">
+          <tr>
+            <td class="text-center">No</td>
+            <td class="text-left">Date</td>
+            <td class="text-center">Order ID</td>
+            {{!-- <td class="text-center">Qty</td> --}}
+            {{!-- <td class="text-center">Status</td> --}}
+            <td class="text-center">Address</td>
+            <td class="text-right">Options</td>
+            
+            
+          </tr>
+        </thead>
+        <tbody>
+          {{#each orders}}
+          <tr>
+            <td class="text-center">{{inc @index}}</td>
+              
+            </td>
+            <td class="text-left">{{this.displayDate}}</a>
+            </td>
+            <td class="text-center">{{this._id}}</td>
+            {{!-- <td class="text-center">{{this.status}}</td> --}}
+            <td class="text-center">{{this.address.firstname}}<br>
+            {{this.address.email}}<br>
+            {{this.address.city}}<br>
+            {{this.address.pincode}}</td>
+            {{!-- <td class="text-center">21/06/2016</td> --}}
+            {{!-- <td><a href="/user/order-products/{{this._id}}" class="btn btn-primary">View Products</a></td> --}}
+            {{!-- <td class="text-right">$228.00</td> --}}
+            <td class="text-center"><a class="btn btn-info" title="View products" data-toggle="tooltip" href="/user/order-products/{{this._id}}"
+                data-original-title="View"><i class="fa fa-eye"></i></a>
+            </td>
+          </tr>
+          {{/each}}
+          
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <!--Middle Part End-->
+  
+
+
+
+
+  
+
+
+
+
+<script>
+    //USER ORDER CANCEL
+function cancelOrder(orderId, proId) {
+    swal({
+        title: "Are you sure?",
+        text: "Do you want to cancel the order",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, Cancel my order",
+        cancelButtonText: "No, cancel please!",
+        closeOnConfirm: false,
+        closeOnCancel: true
+    },
+        function (isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    url: '/user/cancel-order/' + orderId,
+                    method: 'get',
+                    success: (response) => {
+                        if (response.status) {
+                            location.reload()
+                            // document.getElementById(orderId + proId).innerHTML = 'canceled'
+                            // document.getElementById("status-button").style.display = 'none'
+                        }
+                    }
+                })
+            }
+        }
+    );
+}
+
+
+  

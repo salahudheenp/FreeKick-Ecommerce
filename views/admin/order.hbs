@@ -1,0 +1,283 @@
+
+<section style="width:2000px ; margin-top:100px;">
+   <h2>Orders Table</h2>
+<div class="table-wrapper" style="">
+    <table class="fl-table" style="height:600px ;">
+        <thead>
+        <tr>
+             <th>No:</th>
+             <th>Order Id</th>
+            <th> Name</th>
+             <th>Total</th>
+             <th>Date</th>
+             <th>Payment method</th>
+
+             {{!-- <th>Price</th> --}}
+             
+             <th>Address</th>
+             <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+            {{#each orders}}
+            <tr>
+                <td class="align-middle fw-b">{{inc @index}}</td>
+                {{!-- <td> <img style="width:70px; height:70px;" src="/product-images/{{this.product._id}}.jpg" alt=""> --}}
+                </td>
+                <td class="align-middle fw-b">{{this._id}}</td>
+                <td class="align-middle fw-b">{{this.address.address.firstname}}</td>
+                <td class="align-middle fw-b">{{this.totalAmount}}</td>
+                <td class="align-middle fw-b">{{this.displayDate}}</td>
+               
+                <td class="align-middle fw-b">{{this.paymentMethod}}</td>
+                <td class="text-center">
+                    {{this.address.address.email}}<br>
+                    {{this.address.address.city}}<br>
+                    {{this.address.address.pincode}}</td>
+                
+                 {{!-- <td class="order-data align-middle fw-b" id="{{this._id}}{{this.product._id}}">
+                    {{this.status}}</td> --}}
+
+                    <td class="text-center"><a class="btn btn-info" title="View products" data-toggle="tooltip"
+                            href="/admin/order-products/{{this._id}}" data-original-title="View"><i class="fa fa-eye"></i></a>
+                    </td>
+                 {{!-- <td class="align-middle fw-b" id="select">
+                    {{#ifCheck status 'delivered'}}
+                    <option value="delivered">Delivered</option>
+                    {{/ifCheck}}
+                    {{#ifCheck status 'canceled'}}
+                    <option value="canceled">Cancelled</option>
+                    {{/ifCheck}}
+                    {{#ifCheck status 'placed'}}
+                    <select class="form-control" id="{{this.product._id}}{{this._id}}"
+                        onchange="statusChange('{{this.product._id}}','{{this._id}}')" style="width: 90px;">
+                        <option selected="true" disabled="disabled" style="background-color: blue; color: white;">
+                            {{this.status}}</option>
+                        <option value="shipped">Shipped</option>
+                        <option value="delivered">Delivered</option>
+                        <option value="canceled">Canceled</option>
+                    </select>
+                    {{/ifCheck}}
+                    {{#ifCheck status 'pending'}}
+                    <select class="form-control" id="{{this.product._id}}{{this._id}}"
+                        onchange="statusChange('{{this.product._id}}','{{this._id}}')" style="width: 90px;">
+                        <option selected="true" disabled="disabled" style="background-color: blue; color: white;">
+                            {{this.status}}</option>
+                        <option value="pending">Pending</option>
+                        <option value="placed">Placed</option>
+                        <option value="shipped">Shipped</option>
+                        <option value="delivered">Delivered</option>
+                        <option value="canceled">Canceled</option>
+                    </select>
+                    {{/ifCheck}}
+                    {{#ifCheck status 'shipped'}}
+                    <select class="form-control" id="{{this.product._id}}{{this._id}}"
+                        onchange="statusChange('{{this.product._id}}','{{this._id}}')" style="width: 90px;">
+                        <option selected="true" disabled="disabled" style="background-color: blue; color: white;">
+                            {{this.status}}</option>
+                        <option value="delivered">Delivered</option>
+                        <option value="canceled">Canceled</option>
+                    </select>
+                    {{/ifCheck}}
+                </td> - --}}
+            </tr>
+         {{/each}}
+        <tbody>
+    </table>
+</div>
+
+
+
+
+
+</section>
+
+<style>
+ *{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+body{
+    font-family: Helvetica;
+    -webkit-font-smoothing: antialiased;
+    background: rgb(213, 218, 223);
+}
+h2{
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    padding: 30px 0;
+}
+
+/* Table Styles */
+
+.table-wrapper{
+    margin: 0px 70px 70px;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+}
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 8px;
+}
+
+.fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12px;
+}
+
+.fl-table thead th {
+    color: #ffffff;
+    background: #4FC3A1;
+}
+
+
+.fl-table thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #324960;
+}
+
+.fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+/* Responsive */
+
+@media (max-width: 767px) {
+    .fl-table {
+        display: block;
+        width: 100%;
+    }
+    .table-wrapper:before{
+        content: "Scroll horizontally >";
+        display: block;
+        text-align: right;
+        font-size: 11px;
+        color: white;
+        padding: 0 0 10px;
+    }
+    .fl-table thead, .fl-table tbody, .fl-table thead th {
+        display: block;
+    }
+    .fl-table thead th:last-child{
+        border-bottom: none;
+    }
+    .fl-table thead {
+        float: left;
+    }
+    .fl-table tbody {
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+    }
+    .fl-table td, .fl-table th {
+        padding: 20px .625em .625em .625em;
+        height: 60px;
+        vertical-align: middle;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 120px;
+        font-size: 13px;
+        text-overflow: ellipsis;
+    }
+    .fl-table thead th {
+        text-align: left;
+        border-bottom: 1px solid #f7f7f9;
+    }
+    .fl-table tbody tr {
+        display: table-cell;
+    }
+    .fl-table tbody tr:nth-child(odd) {
+        background: none;
+    }
+    .fl-table tr:nth-child(even) {
+        background: transparent;
+    }
+    .fl-table tr td:nth-child(odd) {
+        background: #F8F8F8;
+        border-right: 1px solid #E6E4E4;
+    }
+    .fl-table tr td:nth-child(even) {
+        border-right: 1px solid #E6E4E4;
+    }
+    .fl-table tbody td {
+        display: block;
+        text-align: center;
+    }
+}
+
+{{!-- button --}}
+
+body {margin:2em;}
+td:last-child {text-align:center;}
+</style>
+
+     <script>
+            $(document).ready(function () {
+                $('#orders').DataTable();
+            });
+
+
+
+            {{!--edit-delete button --}}
+
+
+    //ADMIN ORDER STATUS
+     function statusChange(proId, orderId,status) {
+        console.log(proId,'444444444444444',orderId,'lllll',status)
+    var status = document.getElementById(proId + orderId).value;
+         swal({
+             title: "Are you sure?",
+         text: "Do you want to " + status + " the order",
+         type: "warning",
+         showCancelButton: true,
+         confirmButtonColor: "#DD6B55",
+         confirmButtonText: "Yes, " + status + " it!",
+         cancelButtonText: "No!",
+         closeOnConfirm: true,
+         closeOnCancel: true
+    },
+         function (isConfirm) {
+            if (isConfirm) {
+             $.ajax({
+                 url: '/admin/order-status',
+                 data: {
+                    proId,
+                     orderId,
+                     status
+                 },
+                 method: 'post',
+                 success: (response) => {
+                     if (response.status) {
+                         document.getElementById(orderId + proId).innerHTML = status
+                         if (status == 'pending' || status == 'placed' || status == 'shipped' || status == 'delivered' || status == 'canceled') {
+                             location.reload()
+                         }
+                     }
+                 }
+             })
+         } else {
+             location.reload()
+         }
+        }
+         );
+}
+            
+    
+</script>

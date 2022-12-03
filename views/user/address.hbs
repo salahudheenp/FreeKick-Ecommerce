@@ -1,0 +1,397 @@
+
+
+<section style="background-color: #eee;margin-top:100px">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col">
+                <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                    <ol class="breadcrumb mb-0">
+
+                        <li class="breadcrumb-item active"><a href="/user/profile"></a> Profile</li>
+                        <li class="breadcrumb-item"><a href="/user/address">Address</a></li>
+                        {{!-- <li class="breadcrumb-item"><a href="/user/password">Password</a></li> --}}
+                        <li class="breadcrumb-item"><a href="/user/wallet">Wallet</a></li>
+
+
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                            alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                        <h5 class="my-3">{{user.name}}</h5>
+                        <p class="text-muted mb-1">{{user.email}}</p>
+                        {{!-- <p class="text-muted mb-4">Bay Area, San Francisco, CA</p> --}}
+                        {{!-- <div class="d-flex justify-content-center mb-2">
+                            <button type="button" class="btn btn-primary">Follow</button>
+                            <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+                        </div> --}}
+                    </div>
+                </div>
+                {{!-- <div class="card mb-4 mb-lg-0">
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush rounded-3">
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                <i class="fas fa-globe fa-lg text-warning"></i>
+                                <p class="mb-0">https://mdbootstrap.com</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                <i class="fab fa-github fa-lg" style="color: #333333;"></i>
+                                <p class="mb-0">mdbootstrap</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+                                <p class="mb-0">@mdbootstrap</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                                <p class="mb-0">mdbootstrap</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+                                <p class="mb-0">mdbootstrap</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div> --}}
+            </div>
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="d-flex justify-content-end">
+                            
+                                <button type="button" class="btn btn-primary mb-4 " style="margin-left:150px ;" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                    data-bs-whatever="@mdo" style="margin-right: 160px;">Add New Address</button>
+                            </div>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Create new Address</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="/user/add-address" method="post">
+                                                <div class="row gx-3 mb-3">
+                                                    <div class="col-md-6">
+                                                        <label class="small mb-1" for="inputFirstName">First name</label>
+                                                        <input class="form-control" id="firstname" type="text" name="firstname"
+                                                            placeholder="Enter your first name" value="">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="small mb-1" for="inputLastName">Last name</label>
+                                                        <input class="form-control" id="lastname" type="text" name="lastname"
+                                                            placeholder="Enter your last name" value="">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                                                    <input class="form-control" id="email" type="email" name="email"
+                                                        placeholder="Enter your email address" value="">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="small mb-1" for="inputEmailAddress">Address</label>
+                                                    <input class="form-control" id="address" type="text" name="address"
+                                                        placeholder="Enter your Address" value="">
+                                                </div>
+                                                <div class="row gx-3 mb-3">
+                                                    <div class="col-md-6">
+                                                        <label class="small mb-1" for="inputPhone">Phone number</label>
+                                                        <input class="form-control" id="mobile" type="tel" name="mobile"
+                                                            placeholder="Enter your phone number" value="">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="small mb-1" for="inputCountry">Country</label>
+                                                        <input class="form-control" id="country" type="text" name="country"
+                                                            placeholder="Enter your Country" value="">
+                                                    </div>
+                                                </div>
+                                                <div class="row gx-3 mb-3">
+                                                    <div class="col-md-6">
+                                                        <label class="small mb-1" for="inputState">State</label>
+                                                        <input class="form-control" id="state" type="text" name="state"
+                                                            placeholder="Enter your State" value="">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="small mb-1" for="inputDistrict">District</label>
+                                                        <input class="form-control" id="district" type="text" name="district"
+                                                            placeholder="Enter your District" value="">
+                                                    </div>
+                                                </div>
+                                                <div class="row gx-3 mb-3">
+                                                    <div class="col-md-6">
+                                                        <label class="small mb-1" for="inputCity">City</label>
+                                                        <input class="form-control" id="city" type="text" name="city" placeholder="Enter your City"
+                                                            value="">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="small mb-1" for="inputPin">Pincode</label>
+                                                        <input class="form-control" id="pincode" type="number" name="pincode"
+                                                            placeholder="Enter your Pincode" value="">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Ok</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        {{!-- <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Email</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{user.email}}</p>
+                            </div>
+                        </div>
+                        <hr> --}}
+                        {{!-- <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Phone</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{user.phone}}</p>
+                            </div>
+                        </div> --}}
+                        {{!-- <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Mobile</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{user.phone}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">User Id</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{user._id}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+                <div class="row justify-content-center">
+                    <div class="col-xl-8 w-100">
+                        {{#each address}}
+                        <div class="card mb-4" id="card">
+                            <div class="card-header">
+                                Address
+                                <div class="float-end">
+                                    {{!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#editAddress" data-bs-whatever="@mdo">Edit</button>--}}
+                                    <button class="btn btn-danger">
+                                        <a style="text-decoration:none; color: white;"
+                                            href="/user/delete-address/{{this.address._id}}">Delete</a>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <strong>{{this.address.firstname}} {{this.address.lastname}}</strong> <br>
+                                {{this.address.mobile}} <br>
+                                {{this.address.email}}<br>
+                                {{this.address.address}} <br>
+                                {{this.address.country}}, {{this.address.state}}, {{this.address.city}} <br>
+                                {{this.address.pincode}}
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<style>
+    :root {
+        --card-line-height: 1.2em;
+        --card-padding: 1em;
+        --card-radius: 0.5em;
+        --color-green: #ffffff;
+        --color-gray: #e2ebf6;
+        --color-dark-gray: #c4d1e1;
+        --radio-border-width: 2px;
+        --radio-size: 1.5em;
+    }
+    body {
+        color: #263238;
+        margin: 0;
+    }
+    .grid {
+        display: grid;
+        grid-gap: var(--card-padding);
+        margin: 0 auto;
+        max-width: 60em;
+        padding: 0;
+        @media (min-width: 42em) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    .card {
+        background-color: #fff;
+        border-radius: var(--card-radius);
+        position: relative;
+        &:hover {
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+        }
+    }
+    .radio {
+        font-size: inherit;
+        margin: 0;
+        position: absolute;
+        right: calc(var(--card-padding) + var(--radio-border-width));
+        top: calc(var(--card-padding) + var(--radio-border-width));
+    }
+    @supports (-webkit-appearance: none) or (-moz-appearance: none) {
+        .radio {
+            background: #fff;
+            border: var(--radio-border-width) solid var(--color-green);
+            border-radius: 50%;
+            cursor: pointer;
+            height: var(--radio-size);
+            outline: none;
+            transition: background 0.2s ease-out, border-color 0.2s ease-out;
+            width: var(--radio-size);
+            &::after {
+                border: var(--radio-border-width) solid #fff;
+                border-top: 0;
+                border-left: 0;
+                content: "";
+                display: block;
+                height: 0.75rem;
+                left: 25%;
+                position: absolute;
+                top: 50%;
+                transform: rotate(45deg) translate(-50%, -50%);
+                width: 0.375rem;
+            }
+            &:checked {
+                background: var(--color-blue);
+                border-color: var(--color-blue);
+            }
+        }
+        .card:hover .radio {
+            border-color: var(--color-dark-gray);
+            &:checked {
+                border-color: var(--color-blue);
+            }
+        }
+    }
+    .plan-details {
+        border: var(--radio-border-width) solid var(--color-gray);
+        border-radius: var(--card-radius);
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        padding: var(--card-padding);
+        transition: border-color 0.2s ease-out;
+    }
+    .card:hover .plan-details {
+        border-color: var(--color-dark-gray);
+    }
+    .radio:checked~.plan-details {
+        border-color: var(--color-green);
+    }
+    .radio:focus~.plan-details {
+        box-shadow: 0 0 0 2px var(--color-dark-gray);
+    }
+    .radio:disabled~.plan-details {
+        color: var(--color-dark-gray);
+        cursor: default;
+    }
+    .radio:disabled~.plan-details .plan-type {
+        color: var(--color-dark-gray);
+    }
+    .card:hover .radio:disabled~.plan-details {
+        border-color: var(--color-gray);
+        box-shadow: none;
+    }
+    .card:hover .radio:disabled {
+        border-color: var(--color-gray);
+    }
+    .plan-type {
+        color: var(--color-green);
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1em;
+    }
+    .plan-cost {
+        font-size: 2.5rem;
+        font-weight: bold;
+        padding: 0.5rem 0;
+    }
+    .slash {
+        font-weight: normal;
+    }
+    .plan-cycle {
+        font-size: 2rem;
+        font-variant: none;
+        border-bottom: none;
+        cursor: inherit;
+        text-decoration: none;
+    }
+    .hidden-visually {
+        border: 0;
+        clip: rect(0, 0, 0, 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+    }
+
+    
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
+    :root{
+        --font-style:'Nunito Sans', sans-serif;
+    }
+    body{
+        font-family: var(--font-style);
+        background-color: #1C2A44;
+    }
+    .ul{
+        margin:5%;
+        width: 450px;
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        padding:25px 0;
+        border-radius: 25px;
+        border:0.1px solid #099FFF;
+        background-color: #18181B;
+        box-shadow: 0 4px 8px 0 #00FFFF,0 6px 20px 0 rgba(0, 0,0, 0.19);
+        
+
+    }
+    .li{
+        margin: auto;
+        color:white;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .li:after{
+        display: block;
+    }
+    .li:hover:after{
+        transform: scaleX(1);
+    }
+</style>
+</style>

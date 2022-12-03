@@ -1,0 +1,386 @@
+<section style="width:2000px ;">
+    <h2>Orders Table</h2>
+    <div class="table-wrapper" style="">
+        <table class="fl-table" style="height:600px ;">
+            <thead>
+                <tr>
+                    <th>No:</th>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    {{!-- <th>Date</th> --}}
+                    {{!-- <th>Payment</th> --}}
+
+                    {{!-- <th>Price</th> --}}
+
+                    <th>Status</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each products}}
+                <tr>
+                    <td class="align-middle fw-b">{{inc @index}}</td>
+                    <td> <img style="width:70px; height:70px;" src="{{this.productInfo.images.[0]}}" alt="">
+                    </td>
+                    <td class="align-middle fw-b">{{this.productInfo.name}}</td>
+                    <td class="align-middle fw-b">{{this.quantity}}</td>
+                    {{!-- <td class="align-middle fw-b">{{this.totalAmount}}</td> --}}
+                    <td class="align-middle fw-b">₹ {{this.subtotal}}</td>
+                
+
+                    <td class="text-center">{{this.address.firstname}}<br>
+                        {{this.address.email}}<br>
+                        {{this.address.city}}<br>
+                        {{this.address.pincode}}</td>
+
+                    <td class="order-data align-middle fw-b" id="{{this._id}}{{this.productInfo._id}}">
+                        {{this.status}}</td>
+                    <td class="align-middle fw-b" id="select">
+                        {{#ifCheck status 'delivered'}}
+                        <option value="delivered">Delivered</option>
+                        {{/ifCheck}}
+                        {{#ifCheck status 'canceled'}}
+                        <option value="canceled">Cancelled</option>
+                        {{/ifCheck}}
+                        {{#ifCheck status 'placed'}}
+                        <select class="form-control" id="{{this.productInfo._id}}{{this._id}}"
+                            onchange="statusChange('{{this.productInfo._id}}','{{this._id}}','{{this.status}}')" style="width: 90px;">
+                            <option selected="true" disabled="disabled" style="background-color: blue; color: white;">
+                                {{this.status}}</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="canceled">Canceled</option>
+                        </select>
+                        {{/ifCheck}}
+                        {{#ifCheck status 'pending'}}
+                        <select class="form-control" id="{{this.productInfo._id}}{{this._id}}"
+                            onchange="statusChange('{{this.productInfo._id}}','{{this._id}}','{{this.status}}')" style="width: 90px;">
+                            <option selected="true" disabled="disabled" style="background-color: blue; color: white;">
+                                {{this.status}}</option>
+                            <option value="pending">Pending</option>
+                            <option value="placed">Placed</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="canceled">Canceled</option>
+                        </select>
+                        {{/ifCheck}}
+                        {{#ifCheck status 'shipped'}}
+                        <select class="form-control" id="{{this.productInfo._id}}{{this._id}}"
+                            onchange="statusChange('{{this.productInfo._id}}','{{this._id}}','{{this.status}}')"  style="width: 90px;">
+                            <option selected="true" disabled="disabled" style="background-color: blue; color: white;">
+                                {{this.status}}</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="canceled">Canceled</option>
+                        </select>
+                        {{/ifCheck}}
+                        {{#ifCheck status 'returned-pending'}}
+                        <div class="text-center">
+                            <button type="button" class="btn btn-warning" onclick="returnProductAdmin('{{this._id}}','{{this.productInfo._id}}')">Return
+                            <i class="fa-regular fa-square-check"></i></button>
+{{!-- 
+                              <i class="fa-solid fa-xmark"></i>
+                            <button type="button" class="btn btn-danger" onclick="returnProductAdmin('{{this._id}}','{{this.item}}')">Cancel
+                            <i class="fa-solid fa-xmark"></i></button> --}}
+                        </div>
+                        {{/ifCheck}}
+
+                    </td>
+                </tr>
+                {{/each}}
+            <tbody>
+        </table>
+        <section class="h-100 gradient-custom">
+            <div class="container py-5 h-100">
+                {{!-- <div class="row d-flex justify-content-center align-items-center h-100"> --}}
+                    {{!-- <div class="col-lg-10 col-xl-8"> --}}
+                        {{!-- <div class="card" style="border-radius: 10px;"> --}}
+        
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <p class="lead fw-normal mb-0" style="color: #a8729a;">Receipt</p>
+                                    <p class="small text-muted mb-0">Receipt Voucher : 1KAU9-84UIL</p>
+                                </div>
+        
+        
+        
+                                <div class="d-flex justify-content-between pt-2">
+                                    <p class="fw-bold mb-0">Order Details</p>
+                                    <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span> $898.00</p>
+                                </div>
+        
+                                <div class="d-flex justify-content-between pt-2">
+                                    <p class="text-muted mb-0">Invoice Number : 788152</p>
+                                    <p class="text-muted mb-0"><span class="fw-bold me-4">Discount</span> $19.00</p>
+                                </div>
+        
+                                <div class="d-flex justify-content-between">
+                                    <p class="text-muted mb-0">Invoice Date : 22 Dec,2019</p>
+                                    <p class="text-muted mb-0"><span class="fw-bold me-4">GST 18%</span> 123</p>
+                                </div>
+        
+                                <div class="d-flex justify-content-between mb-5">
+                                    <p class="text-muted mb-0">Recepits Voucher : 18KU-62IIK</p>
+                                    <p class="text-muted mb-0"><span class="fw-bold me-4">Delivery Charges</span> Free</p>
+                                </div>
+                            </div>
+                            <div class="card-footer border-0 px-4 py-5"
+                                style="background-color: #a8729a; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                                <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">Total
+                                    paid: <span class="h2 mb-0 ms-2">$1040</span></h5>
+                            </div>
+                            {{!--
+                        </div> --}}
+                        {{!-- </div> --}}
+                    {{!-- </div> --}}
+            </div>
+        </section>
+    </div>
+
+    
+
+
+
+
+
+</section>
+
+
+
+
+<style>
+    * {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+
+    body {
+        font-family: Helvetica;
+        -webkit-font-smoothing: antialiased;
+        background: rgb(213, 218, 223);
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: white;
+        padding: 30px 0;
+    }
+
+    /* Table Styles */
+
+    .table-wrapper {
+        margin: 0px 70px 70px;
+        box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .fl-table {
+        border-radius: 5px;
+        font-size: 12px;
+        font-weight: normal;
+        border: none;
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 100%;
+        white-space: nowrap;
+        background-color: white;
+    }
+
+    .fl-table td,
+    .fl-table th {
+        text-align: center;
+        padding: 8px;
+    }
+
+    .fl-table td {
+        border-right: 1px solid #f8f8f8;
+        font-size: 12px;
+    }
+
+    .fl-table thead th {
+        color: #ffffff;
+        background: #4FC3A1;
+    }
+
+
+    .fl-table thead th:nth-child(odd) {
+        color: #ffffff;
+        background: #324960;
+    }
+
+    .fl-table tr:nth-child(even) {
+        background: #F8F8F8;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 767px) {
+        .fl-table {
+            display: block;
+            width: 100%;
+        }
+
+        .table-wrapper:before {
+            content: "Scroll horizontally >";
+            display: block;
+            text-align: right;
+            font-size: 11px;
+            color: white;
+            padding: 0 0 10px;
+        }
+
+        .fl-table thead,
+        .fl-table tbody,
+        .fl-table thead th {
+            display: block;
+        }
+
+        .fl-table thead th:last-child {
+            border-bottom: none;
+        }
+
+        .fl-table thead {
+            float: left;
+        }
+
+        .fl-table tbody {
+            width: auto;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .fl-table td,
+        .fl-table th {
+            padding: 20px .625em .625em .625em;
+            height: 60px;
+            vertical-align: middle;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            overflow-y: auto;
+            width: 120px;
+            font-size: 13px;
+            text-overflow: ellipsis;
+        }
+
+        .fl-table thead th {
+            text-align: left;
+            border-bottom: 1px solid #f7f7f9;
+        }
+
+        .fl-table tbody tr {
+            display: table-cell;
+        }
+
+        .fl-table tbody tr:nth-child(odd) {
+            background: none;
+        }
+
+        .fl-table tr:nth-child(even) {
+            background: transparent;
+        }
+
+        .fl-table tr td:nth-child(odd) {
+            background: #F8F8F8;
+            border-right: 1px solid #E6E4E4;
+        }
+
+        .fl-table tr td:nth-child(even) {
+            border-right: 1px solid #E6E4E4;
+        }
+
+        .fl-table tbody td {
+            display: block;
+            text-align: center;
+        }
+    }
+
+        {
+            {
+            !-- button --
+        }
+    }
+
+    body {
+        margin: 2em;
+    }
+
+    td:last-child {
+        text-align: center;
+    }
+
+
+
+    {{!-- new --}}
+
+
+
+
+    .gradient-custom {
+/* fallback for old browsers */
+background: #cd9cf2;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to top left, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to top left, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1))
+}
+</style>
+
+<script>
+    $(document).ready(function () {
+        $('#orders').DataTable();
+    });
+
+
+
+
+
+
+    //ADMIN ORDER STATUS
+    function statusChange(proId, orderId,status) {
+        console.log(status,'hgggggggggggggggggggggggggggggggggggggggggggggggjsa',proId,'jjjjjj',orderId)
+        var status = document.getElementById(proId + orderId).value;
+        swal({
+            title: "Are you sure?",
+            text: "Do you want to " + status + " the order",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, " + status + " it!",
+            cancelButtonText: "No!",
+            closeOnConfirm: true,
+            closeOnCancel: true
+        },
+            function (isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        url: '/admin/order-status',
+                        data: {
+                            proId,
+                            orderId,
+                            status
+                        },
+                        method: 'post',
+                        success: (response) => {
+                            if (response.status) {
+                                document.getElementById(orderId + proId).innerHTML = status
+                                if (status == 'pending' || status == 'placed' || status == 'shipped' || status == 'delivered' || status == 'canceled') {
+                                    location.reload()
+                                }
+                            }
+                        }
+                    })
+                } else {
+                    location.reload()
+                }
+            }
+        );
+    }
+
+
+</script>

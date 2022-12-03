@@ -1,0 +1,30 @@
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center"
+                        style="font-family: monospace; box-shadow: rgba(100, 100, 111, 0.5)6px 7px 6px 1px; border-radius: 10px 10px 10px 10px;">
+
+                        <div class="mb-md-5 mt-md-4 pb-5">
+                            <div class=" d-flex justify-content-center">
+                                <h2 class="fw-bold ">Free Kick</h2>
+                            </div>
+                            <h2 class="fw-600 mb-2 ">OTP Verification</h2>
+                            <p class="text-white-50 mb-5">Please enter your otp recieved on your device</p>
+
+                            <form onsubmit="return otpValidation()" action="/user/otp-verification" method="post">
+                                <div class="error"></div>
+                                <label for="">OTP</label><br>
+                                <input type="hidden" value="{{phone}}" name="phone" id=""> <br>
+                                <div class="inputs d-flex  "><input class=" text-center form-control rounded"
+                                        type="text" name="otp" id="otp" maxlength="6" /></div>
+                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

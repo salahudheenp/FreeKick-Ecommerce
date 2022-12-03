@@ -1,0 +1,199 @@
+<div class="container">
+    <div style="margin-left:150px ;">
+        <h2 style="margin-left:30px ;">FREE KICK</h2>
+    <h3 class="title">OTP Verification</h3>
+    <p class="sub-title">
+        Enter the OTP you received to
+        <span class="phone-number" style="margin-left:30px ;">{{phone}}</span>
+    </p>
+    </div>
+        <form onsubmit="return otpValidation()" action="/user/forgot-otp-verification" method="post">
+
+    <div class="wrapper" style="display:flex ;flex-direction:row;justify-content:space-evenly">
+        <input type="text" class="field 1" maxlength="1">
+        <input type="text" class="field 2" maxlength="1">
+        <input type="text" class="field 3" maxlength="1">
+        <input type="text" class="field 4" maxlength="1">
+        <input type="text" class="field 4" maxlength="1">
+        <input type="text" class="field 4" maxlength="1">
+
+        
+    </div>
+        <button type="submit" class="btn btn-primary mt-1 " style="margin-left:190px ;">Submit</button>
+
+    </form>
+    <p> Resend OTP After <span id="countdowntimer">5 </span> Seconds</p>
+    <a id="resendbtn" href="/user/resendOtp/{{phone}}" class="resend" style="display: none;">
+        Resend OTP
+        <i class="fa fa-caret-right"></i>
+    </a>
+</div>
+<style>
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background-color: #EAF5F6;
+}
+
+.container {
+  width: 600px;
+  padding: 50px;
+  background-color: #ffffff;
+  border-radius: 25px;
+}
+
+h3.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #093030;
+  margin-bottom: 25px;
+}
+
+p.sub-title {
+  color: #B5BAB8;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+p span.phone-number {
+  display: block;
+  color: #093030;
+  font-weight: 600;
+}
+
+.wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: space-between;
+}
+
+.wrapper input.field {
+  width: 50px;
+  line-height: 75px;
+  font-size: 32px;
+  border: none;
+  background-color: #EAF5F6;
+  border-radius: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #093030;
+  margin-bottom: 25px;
+}
+
+.wrapper input.field:focus {
+  outline: none;
+}
+
+button.resend {
+  background-color: transparent;
+  border: none;
+  font-weight: 600;
+  color: #3DAFE1;
+  cursor: pointer;
+}
+
+button.resend i {
+  margin-left: 5px;
+}
+</style>
+
+
+
+
+
+
+{{!-- <section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+
+                    <div class="card-body p-5 text-center"
+                        style="font-family: monospace; box-shadow: rgba(100, 100, 111, 0.5)6px 7px 6px 1px; border-radius: 10px 10px 10px 10px;">
+
+                        <div class="mb-md-5 mt-md-4 pb-5">
+                            <div class=" d-flex justify-content-center">
+                                <h2 class="fw-bold ">Free Kick</h2>
+                            </div>
+                            <h2 class="fw-600 mb-2 ">OTP Verification</h2>
+                            <p class="text-white-50 mb-5">Please enter your otp recieved on your device</p>
+
+                            <form onsubmit="return otpValidation()" action="/user/forgot-otp-verification" method="post">
+                                <div class="error"></div>
+                                <label for="">OTP</label><br>
+                                <input type="hidden" value="{{phone}}" name="phone" id=""> <br>
+                                <div class="inputs d-flex  "><input class=" text-center form-control rounded"
+                                        type="text" name="otp" id="otp" maxlength="6" /></div>
+                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                            </form>
+                        <div id="resendbtn" style="color: yellow;width:70px;height:auto;"></div>
+
+                            <div class="text-center mt-5"><span class="d-block mobile-text">Don't receive the code?</span>
+                                
+                                
+
+                                    {{!-- <span class="font-weight-bold text-danger cursor">
+                                    <a href="/users/forgot-otp-verification" style="text-decoration: none;">Resend</a>
+                                    </span>  --}}
+                            </div>
+                        </div>
+                    </div>
+                        <div id="resendbtn" ></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section> --}}
+                                
+
+
+<script>
+    var timeleft = 5;
+    var downloadTimer = setInterval(function () {
+        timeleft--;
+        document.getElementById("countdowntimer").textContent = timeleft;
+        if (timeleft <= 0)
+            clearInterval(downloadTimer);
+    }, 1000);
+
+
+    setTimeout(function () {
+        let btn=document.getElementById('resendbtn')
+     document.getElementById('resendbtn').style.display = ""
+      btn.setAttribute('href', "/user/resendOtp/"+ {{ phone }}
+      
+      )
+        btn.textContent = 'Resend'
+        div.appendChild(btn)
+        document.body.appendChild(div)
+
+    }, 5000)
+
+
+
+    const inputFields = document.querySelectorAll("input.field");
+
+    inputFields.forEach((field) => {
+        field.addEventListener("input", handleInput);
+    });
+
+    function handleInput(e) {
+        let inputField = e.target;
+        if (inputField.value.length >= 1) {
+            let nextField = inputField.nextElementSibling;
+            return nextField && nextField.focus();
+        }
+    }
+
+</script>

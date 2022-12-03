@@ -1,0 +1,400 @@
+<!-- hero area -->
+<div class="hero-area hero-bg" style="margin-top:100px ;">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-9 offset-lg-2 text-center">
+				<div class="hero-text">
+					<div class="hero-text-tablecell">
+						<p class="subtitle">New collection</p>
+						<h1>Football Store</h1>
+						<div class="hero-btns">
+							<a href="shop.html" class="boxed-btn">Shop now</a>
+							<a href="contact.html" class="bordered-btn">Contact Us</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end hero area -->
+
+
+<!-- features list section -->
+<div class="list-section pt-80 pb-80">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+				<div class="list-box d-flex align-items-center">
+					<div class="list-icon">
+						<i class="fas fa-shipping-fast"></i>
+					</div>
+					<div class="content">
+						<h3>Free Shipping</h3>
+						<p>When order over $75</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+				<div class="list-box d-flex align-items-center">
+					<div class="list-icon">
+						<i class="fas fa-phone-volume"></i>
+					</div>
+					<div class="content">
+						<h3>24/7 Support</h3>
+						<p>Get support all day</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6">
+				<div class="list-box d-flex justify-content-start align-items-center">
+					<div class="list-icon">
+						<i class="fas fa-sync"></i>
+					</div>
+					<div class="content">
+						<h3>Refund</h3>
+						<p>Get refund within 3 days!</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- end features list section -->
+
+{{!-- 3D --}}
+<div>
+	<div class="container1">
+		<div class="carousel1">
+			<div class="image1"><span></span></div>
+			<div class="image1"><span></span></div>
+			<div class="image1"><span></span></div>
+			<div class="image1"><span></span></div>
+			<div class="image1"><span></span></div>
+			<div class="image1"><span></span></div>
+			<div class="image1"><span></span></div>
+			<div class="image1"><span></span></div>
+			<div class="image1"><span></span></div>
+		</div>
+	</div>
+</div>
+
+
+
+{{!-- 3D end --}}
+
+<!-- product section -->
+<div class="product-section mt-150 mb-150" style="margin-top:500px ;">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2 text-center">
+				<div class="section-title">
+					<h3><span class="orange-text">Our</span> Products</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet
+						beatae optio.</p>
+				</div>
+			</div>
+		</div>
+	
+		<div class="row">
+			{{#each product}}
+			<div class="col-lg-4 col-md-6 text-center">
+				<div class="single-product-item">
+					<div class="product-image">
+						<a href="/user/product-details/{{this._id}}"><img src="{{this.images.[0]}}" style="width: 262px;height:262px;" alt=""></a>
+					</div>
+					<h3>{{this.name}}</h3>
+					{{#if this.currentOffer}}
+					<div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+						{{this.currentOffer}}% off</div>
+					{{else}}
+					<div class="bg-secondary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
+						0% off</div>
+					{{/if}}
+					<p class="product-price"> <span><strike>₹ {{this.price}}</strike></span><strong>₹{{this.offerPrice}}</strong></p>
+
+					{{!-- <p class="product-price"><span></span> ₹  {{this.price}}</p> --}}
+					{{#if this.stock}}
+					<a href="/user/add-to-cart/{{this._id}}" onclick="sweetalertclick()" type="button" class="cart-btn" id="addcrt"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+					{{else}}
+					<a href="#" class="cart-btn"><i class="fas fa-shopping-cart"></i>Out of stock</a>
+                    {{/if}}
+					<br><br>
+					<a type="button" id="wish" class="shopping-cart" onclick="addToWishlist('{{this._id}}')" ><i   class="fa-regular fa-heart"style="margin-left:px ;font-size: xx-large;"></i></a>
+					
+				</div>
+			</div>
+			{{/each}}
+			{{!-- <div class="col-lg-4 col-md-6 text-center">
+				<div class="single-product-item">
+					<div class="product-image">
+						<a href="single-product.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvgRLCIikUF4fTaBd6lTg4tOnXuS6av8Z66ov1fvWPn4dAhrhN4GfiJYhcShY0a7yZawg&usqp=CAU" alt=""></a>
+					</div>
+					<h3>Berry</h3>
+					<p class="product-price"><span>Per Kg</span> 70$ </p>
+					<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
+				<div class="single-product-item">
+					<div class="product-image">
+						<a href="single-product.html"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpkvXNhH52sYQAn6nZUESuuCNLYOYR4V7a8AHUJAFA1qgwiV8DxuC5fBK3JDrP4O_tZJk&usqp=CAU" alt=""></a>
+					</div>
+					<h3>Lemon</h3>
+					<p class="product-price"><span>Per Kg</span> 35$ </p>
+					<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+				</div>
+			</div> --}}
+		</div>
+	</div>
+</div>
+<!-- end product section -->
+
+<!-- cart banner section -->
+<section class="cart-banner pt-100 pb-100">
+	<div class="container">
+		<div class="row clearfix">
+			<!--Image Column-->
+			<div class="image-column col-lg-6">
+				<div class="image">
+					<div class="price-box">
+						<div class="inner-price">
+							<span class="price">
+								<strong>30%</strong> <br> off per kg
+							</span>
+						</div>
+					</div>
+					<img src="https://wallpapercave.com/wp/wp3736454.jpg" alt="">
+				</div>
+			</div>
+			<!--Content Column-->
+			<div class="content-column col-lg-6">
+				<h3><span class="orange-text">Deal</span> of the month</h3>
+				<h4>Hikan Strwaberry</h4>
+				<div class="text">Quisquam minus maiores repudiandae nobis, minima saepe id, fugit ullam similique!
+					Beatae, minima quisquam molestias facere ea. Perspiciatis unde omnis iste natus error sit voluptatem
+					accusant</div>
+				<!--Countdown Timer-->
+				<div class="time-counter">
+					<div class="time-countdown clearfix" data-countdown="2020/2/01">
+						<div class="counter-column">
+							<div class="inner"><span class="count">20</span>Days</div>
+						</div>
+						<div class="counter-column">
+							<div class="inner"><span class="count">8</span>Hours</div>
+						</div>
+						<div class="counter-column">
+							<div class="inner"><span class="count">56</span>Mins</div>
+						</div>
+						<div class="counter-column">
+							<div class="inner"><span class="count">40</span>Secs</div>
+						</div>
+					</div>
+				</div>
+				<a href="/user/shop" class="cart-btn mt-3"><i class="fas fa-shopping-cart"></i> Shop Now</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- end cart banner section -->
+
+
+
+				
+	
+				
+			</div>
+		</div>
+	</section>
+</div>
+<!-- end advertisement section -->
+<!-- footer -->
+<div class="footer-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-6">
+				<div class="footer-box about-widget">
+					<h2 class="widget-title">About us</h2>
+					<p>Ut enim ad minim veniam perspiciatis unde omnis iste natus error sit voluptatem accusantium
+						doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="footer-box get-in-touch">
+					<h2 class="widget-title">Get in Touch</h2>
+					<ul>
+						<li>34/8, East Hukupara, Gifirtok, Sadan.</li>
+						<li>support@fruitkha.com</li>
+						<li>+00 111 222 3333</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="footer-box pages">
+					<h2 class="widget-title">Pages</h2>
+					<ul>
+						<li><a href="/user">Home</a></li>
+						<li><a href="about.html">About</a></li>
+						<li><a href="/user/shop">Shop</a></li>
+						<li><a href="#">News</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="footer-box subscribe">
+					<h2 class="widget-title">Subscribe</h2>
+					<p>Subscribe to our mailing list to get the latest updates.</p>
+					<form action="index.html">
+						<input type="email" placeholder="Email">
+						<button type="submit"><i class="fas fa-paper-plane"></i></button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end footer -->
+
+<!-- copyright -->
+<div class="copyright">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-12">
+				<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>, All Rights Reserved.
+				</p>
+			</div>
+			<div class="col-lg-6 text-right col-md-12">
+				<div class="social-icons">
+					<ul>
+						<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+						<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+						<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+						<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+						<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end shop banner -->
+
+
+<script>
+	
+
+	    function sweetalertclick(){
+			 swal({
+				title: "Add To cart ",
+				type: 'success',
+				text: "congratulations!! ",
+				icon: "success",
+				confirmButtonColor: "#318a2c",
+				confirmButtonText: "Ok",
+				closeOnConfirm: false
+			})
+		}
+</script>
+
+<style>
+
+
+
+	
+        
+        .container1 {
+			  margin: 0;
+            background: #2A2734;
+            text-align: center;
+            font-family: sans-serif;
+            color: #fefefe;
+			
+            position: relative;
+            width: 320px;
+            margin: 100px auto 0 auto;
+            perspective: 1000px;
+        }
+        
+        .carousel1 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: rotate360 60s infinite forwards linear;
+        }
+        
+        .image1 {
+            position: absolute;
+            width: 300px;
+            height: 187px;
+            top: 20px;
+            left: 10px;
+            right: 10px;
+            background-size: cover;
+            display: flex;
+        }
+        
+        span {
+            margin: auto;
+            font-size: 2rem;
+        }
+        
+        .image1:nth-child(1) {
+            background-image: url("https://wallpapercave.com/wp/wp2454262.jpg");
+            transform: rotateY( 0deg) translateZ(430px);
+        }
+        
+        .image1:nth-child(2) {
+            background-image: url("https://wallpapercave.com/wp/wp1925395.jpg");
+            transform: rotateY( 40deg) translateZ(430px);
+        }
+        
+        .image1:nth-child(3) {
+            background-image: url("https://wallpapercave.com/wp/wp2954505.jpg");
+            transform: rotateY( 80deg) translateZ(430px);
+        }
+        
+        .image1:nth-child(4) {
+            background-image: url("https://wallpapercave.com/wp/wp4296927.jpg");
+            transform: rotateY(120deg) translateZ(430px);
+        }
+        
+        .image1:nth-child(5) {
+            background-image: url("https://wallpapercave.com/wp/wp2954447.jpg");
+            transform: rotateY(160deg) translateZ(430px);
+        }
+        
+        .image1:nth-child(6) {
+            background-image: url("https://wallpapercave.com/wp/wp3736412.jpg");
+            transform: rotateY(200deg) translateZ(430px);
+        }
+        
+        .image1:nth-child(7) {
+            background-image: url("https://wallpaperaccess.com/full/1984923.jpg");
+            transform: rotateY(240deg) translateZ(430px);
+        }
+        
+        .image1:nth-child(8) {
+            background-image: url("https://wallpaperaccess.com/full/1176567.jpg");
+            transform: rotateY(280deg) translateZ(430px);
+        }
+        
+        .image1:nth-child(9) {
+            background-image: url("https://wallpaperaccess.com/full/1984931.jpg");
+            transform: rotateY(320deg) translateZ(430px);
+        }
+        
+        @keyframes rotate360 {
+            from {
+                transform: rotateY(0deg);
+            }
+            to {
+                transform: rotateY(-360deg);
+            }
+        }
+		
+
+</style>

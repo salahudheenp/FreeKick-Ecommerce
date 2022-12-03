@@ -1,0 +1,165 @@
+<section>
+    <div class="container  mt-5 ml-5">
+      <form class="form-inline" action="/admin/category" id="addCategory" method="post">
+  <div class="form-group mb-2">
+    {{!-- <label for="staticEmail2" class="sr-only">Category</label>
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="email@example.com"> --}}
+  </div>
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="inputPassword2" class="sr-only">Category</label>
+    <input type="Text" class="form-control" id="inputPassword2" name="category" placeholder="Category" required>
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Add Category</button>
+</form>
+
+    </div>
+</section>
+
+
+<section>
+    <table class="table mt-5 col-md-1  table-bordered table-hover" style="margin-left: 150px;">
+      <thead>
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Category List</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+     
+        {{#each category}}
+    <tr>
+      <th scope="row">{{@index}}</th>
+      <td>{{this.category}}</td>
+      <td>
+      {{!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+        data-whatever="@getbootstrap">Edit</button> --}}
+      
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">{{this.category}}</label>
+                  <input type="text" class="form-control" id="recipient-name">
+                </div>
+                {{!-- <div class="form-group">
+                  <label for="message-text" class="col-form-label">Message:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div> --}}
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <a href="/admin/delete-category/{{this._id}}" onclick="return confirm('Are you want to delete{{this.Name}}?')" class="btn btn-danger">Delete</a>
+      </td>
+      
+    </tr>
+      {{/each}}
+        
+     
+       
+      </tbody>
+    </table>
+    
+  
+    </div>
+</section>
+<script>
+  
+    //CATEGORY CHECKING IF ALREADY EXISTS
+    $("#addCategory").submit((e) => {
+      e.preventDefault();
+      $.ajax({
+        url: '/admin/category',
+        method: 'post',
+        data: $("#addCategory").serialize(),
+        success: (response) => {
+          if (response.status) {
+            location.reload()
+          } else {
+            swal({
+              title: "There is Already a Category....!",
+              text: "Your will not be able to create an existing CATEGORY",
+              type: "warning",
+              confirmButtonColor: "red",
+              confirmButtonClass: "btn-danger",
+              confirmButtonText: "Ok",
+              closeOnConfirm: true
+            })
+          }
+        }
+      })
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+    //EDIT CATEGORY
+      function editCategory(categoryId, categoryName) {
+        let category = document.getElementById(categoryId).innerHTML
+        swal({
+          title: "Edit Category!",
+          type: "input",
+          showCancelButton: true,
+          closeOnConfirm: true,
+          animation: "slide-from-top",
+          inputValue: category,
+          inputPlaceholder: "Edit Category"
+        },
+          function (inputValue) {
+            if (inputValue === null)
+              return false;
+            if (inputValue === "") {
+              return false
+            }
+            $.ajax({
+              url: '/admin/edit-category',
+              method: 'get',
+              data: {
+                categoryId,
+                inputValue,
+                categoryName
+              },
+              success: (response) => {
+                if (response.status) {
+                  document.getElementById(categoryId).innerHTML = inputValue.toUpperCase()
+                } else {
+                  return false
+                }
+              }
+            })
+          });
+      }
+
+</script>

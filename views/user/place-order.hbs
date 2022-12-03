@@ -1,0 +1,561 @@
+<!-- search area -->
+<div class="search-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                <div class="search-bar">
+                    <div class="search-bar-tablecell">
+                        <h3>Search For:</h3>
+                        <input type="text" placeholder="Keywords">
+                        <button type="submit">Search <i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end search arewa -->
+
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p>Fresh and Organic</p>
+                    <h1>Check Out Product</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+
+<!-- check out section -->
+<div class="checkout-section mt-150 mb-150">
+  {{!-- <form class="container content" id="checkout-form" method="post"> --}}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="checkout-accordion-wrap">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card single-accordion">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse"
+                                        data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Billing Address
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                   {{!-- radio card --}}
+                            <div style="display:flex ;flex-direction:column;justify-content:space evenly">
+                                <p class="billing_text mb_23px">Delievery Info</p>
+                                {{!-- address --}}
+                                {{!-- <a class="btn btn-outline-dark" href="/user/address">Add Delivery Address</a> --}}
+                                <div style="background-color: #ffffff;display:flex;justify-content:center;">
+                                    {{#if address}}
+                                <div class="d-flex justify-content-end " >
+                                    <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        data-bs-whatever="@mdo">Add New Address</button>
+                                </div>
+                                {{else}}
+                                <div class="d-flex justify-content-end ">
+                                    <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        data-bs-whatever="@mdo">Add Address</button>
+                                </div>
+                                {{/if}}
+
+                                </div>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Create new Address</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="/user/add-address-checkout" method="post" class="needs-validation" novalidate>
+                                                    <div class="row gx-3 mb-3">
+                                                        <div class="col-md-6">
+                                                            <label class="small mb-1" for="inputFirstName">First name</label>
+                                                            <input class="form-control" id="firstname" type="text" name="firstname"
+                                                                placeholder="Enter your first name" value="" required>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label class="small mb-1" for="inputLastName">Last name</label>
+                                                            <input class="form-control" id="lastname" type="text" name="lastname"
+                                                                placeholder="Enter your last name" value="" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                                                        <input class="form-control" id="email" type="email" name="email"
+                                                            placeholder="Enter your email address" value="" required>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="small mb-1" for="inputEmailAddress">Address</label>
+                                                        <input class="form-control" id="address" type="text" name="address"
+                                                            placeholder="Enter your Address" value="" required>
+                                                    </div>
+                                                    <div class="row gx-3 mb-3">
+                                                        <div class="col-md-6">
+                                                            <label class="small mb-1" for="inputPhone">Phone number</label>
+                                                            <input class="form-control" id="mobile" type="tel" name="mobile"
+                                                                placeholder="Enter your phone number" value="" required>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label class="small mb-1" for="inputCountry">Country</label>
+                                                            <input class="form-control" id="country" type="text" name="country"
+                                                                placeholder="Enter your Country" value="" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row gx-3 mb-3">
+                                                        <div class="col-md-6">
+                                                            <label class="small mb-1" for="inputState">State</label>
+                                                            <input class="form-control" id="state" type="text" name="state"
+                                                                placeholder="Enter your State" value="" required>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label class="small mb-1" for="inputDistrict">District</label>
+                                                            <input class="form-control" id="district" type="text" name="district"
+                                                                placeholder="Enter your District" value="" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row gx-3 mb-3">
+                                                        <div class="col-md-6">
+                                                            <label class="small mb-1" for="inputCity">City</label>
+                                                            <input class="form-control" id="city" type="text" name="city" placeholder="Enter your City"
+                                                                value="" required>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label class="small mb-1" for="inputPin">Pincode</label>
+                                                            <input class="form-control" id="pincode" type="number" name="pincode"
+                                                                placeholder="Enter your Pincode" value="" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Ok</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form class="container content" id="checkout-form" method="post">
+
+                            
+                                {{!-- radio --}}
+                                {{#each address}}
+                                <div class="grid" style="">
+                                    <label class="card mb-4">
+                                        <input name="addressId" value="{{this.address._id}}" class="radio" type="radio" checked
+                                            style="margin-right:20px;">
+                                        <div class="card mb-4" id="card">
+                                            <div class="card-header">
+                                                Address
+                                                <div class="float-end">
+                                                    {{!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        data-bs-target="#editAddress" data-bs-whatever="@mdo">Edit</button>--}}
+                                                    {{!-- <button class="btn btn-danger">
+                                                        <a style="text-decoration:none; color: white;"
+                                                            href="/delete-address/{{this.address._id}}">Delete</a>
+                                                    </button> --}}
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <strong>{{this.address.firstname}} {{this.address.lastname}}</strong> <br>
+                                                {{this.address.mobile}} <br>
+                                                {{this.address.email}}<br>
+                                                {{this.address.address}} <br>
+                                                {{this.address.country}}, {{this.address.state}}, {{this.address.city}} <br>
+                                                {{this.address.pincode}}
+                                            </div>
+                                        </div>
+                            
+                                        {{!-- <span class="plan-details">
+                                            <span class="plan-type">{{this.address.firstname}} {{this.address.lastname}}</span>
+                                            <span class="pt-2">{{this.address.mobile}}</span>
+                                            <span>{{this.address.email}}</span>
+                                            <span>{{this.address.address}}</span>
+                                        </span> --}}
+                                    </label>
+                                </div>
+                                {{/each}}
+                            
+                            
+                            
+                            
+                            
+                            </div>
+                                   {{!-- radiocard --}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card single-accordion">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Select Pyment method
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="shipping-address-form">
+                                        {{!-- radio --}}
+                                        <div class="control-group">
+                                            <h1></h1>
+                                            <label class="control control--radio" >Cod
+                                                <input type="radio" name="payment-method"  checked="checked" value="cod" />
+                                                <div class="control__indicator"></div>
+                                            </label>
+                                            <label class="control control--radio" > Paypal
+                                                <input type="radio" name="payment-method" checked="cheched" value="paypal"/>
+                                                <div class="control__indicator"></div>
+                                            </label>
+                                            <label class="control control--radio">razorpay
+                                                <input type="radio" name="payment-method" checked="cheched" value="razorpay" />
+                                                <div class="control__indicator"></div>
+                                            </label>
+                                           
+                                        </div>
+                                        {{!-- radio --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{!-- <div class="card single-accordion">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                        data-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        Card Details
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="card-details">
+                                        <p>Your card details goes here.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> --}}
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="order-details-wrap">
+                    <table class="order-details">
+                        <thead>
+                            <tr>
+                                <th>Your order Details</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody class="order-details-body">
+                            {{#each products}}
+                            <tr>
+                                {{!-- <td>Product</td>
+                                <td>Total</td> --}}
+                            </tr>
+                            <tr>
+                                <td>{{this.product.name}}</td>
+                                <td>{{this.quantity}}</td>
+                                <td>{{this.total}}</td>
+                            </tr>
+                            {{!-- <tr>
+                                <td>Berry</td>
+                                <td>$70.00</td>
+                            </tr>
+                            <tr>
+                                <td>Lemon</td>
+                                <td>$35.00</td>
+                            </tr> --}}
+                            {{/each}}
+                        </tbody>
+                        <tbody class="checkout-details">
+                            {{!-- <tr>
+                                <td>Subtotal</td>
+                                <td>$190</td>
+                            </tr>
+                            <tr>
+                                <td>Shipping</td>
+                                <td>$50</td>
+                            </tr> --}}
+                            <tr>
+                                <td>Total</td>
+                                <td class=" list-group-item d-flex justify-content-between">
+                                    <span>Offer</span>
+                                    <strong style="color:green;">-₹ <class="" id="coupon-offer" ></strong>
+                                </td>
+                                <td><span id="final-amount">₹{{total}}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                        <input type="hidden" name="coupon" id="checkOutCoupon">
+                        <input type="hidden" name="couponOffer" id="couponOffer">
+                        <input type="hidden" name="fainalAmount" id="totalAmount">
+                        {{!-- <input type="hidden" name="totalAmount" id="totalCheckoutAmount"> --}}
+                    
+                   
+                    <button  class="boxed-btn" id="btn" type="submit" style="margin-top:30px ;">place order
+                    {{!-- <a href="/user/order-success"id="btn" class="boxed-btn">Place Order</a> --}}
+                    </button>
+                </div>
+            </div>
+    </form>
+<div class="coupon-section" style="width: 600px; margin-left:300px;margin-bottom:900px;">
+    <h3>Apply Coupon</h3>
+    <div class="coupon-form-wrap">
+        <form class="card p-2" id="redeem-coupon" method="post">
+            <div><small style="color:red;" id="coupon-condition"></small></div>
+            <div class="input-group">
+                <p><input type="text" class="form-control" id="coupon-form" name="coupon" placeholder="Coupon code"></p>
+                <div class="input-group-append">
+
+                    <p><button type="submit" class="btn btn-secondary">Redeem</button>
+                        {{!-- <input type="submit" value="Apply"> --}}
+                    <div id="coupon-condition"></div>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+        </div>
+    </div>
+
+                {{!-- <div class="coupon-section" >
+                    <h3>Apply Coupon</h3>
+                    <div class= "coupon-form-wrap">
+                        <form class="card p-2"  id="redeem-coupon" method="post">
+                            <p><input type="text" placeholder="Coupon"></p>
+                            <p><input type="submit" value="Apply"></p>
+                        </form>
+                    </div>
+                </div>  --}}
+              
+{{!-- <div class="coupon-section" style="width: 600px; margin-left:300px;margin-bottom:900px;" >
+     <form class="card p-2" id="redeem-coupon" method="post">
+        <div><small style="color:red;" id="coupon-condition"></small></div>
+        <div class="input-group">
+            <input type="text" class="form-control" id="coupon-form" name="coupon" placeholder="Coupon code">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-secondary">Redeem</button>
+                
+            </div>
+        </div>
+    </form> 
+    </div> --}}
+</div>
+<!-- end check out section -->
+
+
+    <!-- end content -->
+    
+
+    <script>
+
+        $("#checkout-form").submit((e) => {
+            e.preventDefault()
+            console.log('kjkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj')
+            $.ajax({
+                url: '/user/place-order',
+                method: 'post',
+                data: $('#checkout-form').serialize(),
+                success: (response) => {
+                 console.log('kasldddddddddddk')
+                    if (response.codSuccess) {
+                          swal({
+                            title: "Order Placed ",
+                            type: 'success',
+                            text: "congratulations!! ",
+                            icon: "success",
+                            confirmButtonColor: "#318a2c",
+                            confirmButtonText: "Click here to See the Orders!",
+                            closeOnConfirm: false
+                        },
+                            function (isConfirm) {
+                                if (isConfirm) {
+                                    location.href = '/user/orders'          // submitting the form when user press yes
+                                }
+                            });
+
+                    } else if (response.paypal) {
+                        console.log('qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq')
+                        location.href = response.link
+                    }
+                        else {
+                    razorpayPayment(response)
+                    console.log('111111111111111111111111')
+
+
+                    }
+                }
+               
+            })
+        })
+
+         function razorpayPayment(order){
+                var options = {
+                    "key": 'rzp_test_mimamD7ftxBYoU', // Enter the Key ID generated from the Dashboard
+                    "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                    "currency": "INR",
+                    "name": "Free Kick",
+                    "description": "Test Transaction",
+                    "image": "https://example.com/your_logo",
+                    "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                    "handler": function (response) {
+                        verifyPayment(response, order)
+                    },
+                    "prefill": {
+                        "name":'salahudheen',
+                        "email":'sala@gmail.com',
+                        "contact":9765253235
+                    },
+                    "notes": {
+                        "address": "Razorpay Corporate Office"
+                    },
+                    "theme": {
+                        "color": "#3399cc"
+                    }
+                };
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
+            }
+
+            function verifyPayment(payment,order){
+                $.ajax({
+                    url:'/user/verify-payment',
+                    data:{
+                        payment,
+                        order
+
+                    },
+                    method:'post',
+                    success:(response)=>{
+                        if(response.status){
+                             swal({
+                                title: "Order Placed ",
+                                type: 'success',
+                                text: "congratulations!! ",
+                                icon: "success",
+                                confirmButtonColor: "#318a2c",
+                                confirmButtonText: "Click here to See the Orders!",
+                                closeOnConfirm: false
+                            },
+                                function (isConfirm) {
+                                    if (isConfirm) {
+                                        location.href = '/user/orders'          // submitting the form when user press yes
+                                    }
+                                });
+
+                        }else{
+                            alert('payment failed')
+                        }
+
+                    }
+                })
+            }
+
+        
+
+        
+
+
+
+
+
+
+{{!-- redeem coupon --}}
+       
+            $('#redeem-coupon').submit((e) => {
+                e.preventDefault()
+                $.ajax({
+                    url: '/user/redeem-coupon',
+                    method: 'post',
+                    data: $('#redeem-coupon').serialize(),
+                    success: (response) => {
+                        console.log(response,'***********************')
+                        if (!response.msg) {
+                            $('#coupon-condition').text("")
+                            $('#coupon-form').css('border-color', 'green')
+                            $('#final-amount').text(response.total)
+                            $('#coupon-offer').text(response.offer)
+                            $('#totalCheckoutAmount').val(response.total)
+                            $('#checkOutCoupon').val(response.couponName)
+                            $('#couponOffer').val(response.offer)
+                            $('#totalAmount').val(response.total)
+
+
+
+                        } else {
+                            $('#coupon-condition').text(response.msg)
+                            $('#coupon-form').css('border-color', 'red')
+                            $('#final-amount').text(response.total)
+                            $('#coupon-offer').text(response.offer)
+                            $('#totalCheckoutAmount').val(response.total)
+                        }
+                    }
+                })
+            })
+
+   
+
+
+
+    </script>
+
+    <style>
+    
+
+
+ .boxed-btn {
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.boxed-btn, a.bordered-btn, a.cart-btn {
+    border-radius: 50px;
+}
+.boxed-btn {
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    background-color: #F28123;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.boxed-btn {
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.boxed-btn:hover {
+  background-color: #051922;
+  color: #F28123;
+}
+
+        
+
+    </style>
+

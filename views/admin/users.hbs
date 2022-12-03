@@ -1,0 +1,40 @@
+<section>
+  <div class="container mt-3 d-flex justify-content-end" style="margin-left:170px ;">
+    <div class="row d-flex justify-content-end">
+        {{!-- <a href="/admin/add-product  " class="btn btn-success  " style="width: 10rem;" >Add product</a> --}}
+
+    </div>
+    <table class="table mt-5  table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Name</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Email</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each users}}
+        <tr>
+          <th scope="row">{{@index}}</th>
+          <td>{{this.name}}</td>
+          <td>{{this.phone}}</td>
+          <td>{{this.email}}</td>
+          {{!-- <td><img style="width:50px ;height:50px;" src="/product-images/{{this._id}}.jpg" alt=""></td> --}}
+          <td>
+            {{#if status}}
+            
+            <a href="/admin/userstatus/{{this._id}}" onclick="return confirm('Are you want to Block{{this.Name}}?')" class="btn btn-danger">Block</a>
+            {{else}}
+             <a href="/admin/userstatus/{{this._id}}" onclick="return confirm('Are you want to Block{{this.Name}}?')" class="btn btn-primary">UnBlock</a>
+         {{/if}}
+          </td>
+        {{/each}}
+          
+       
+      </tbody>
+    </table>
+  </div>
+
+</section>
