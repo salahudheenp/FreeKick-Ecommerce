@@ -22,7 +22,7 @@
         <button type="submit" class="btn btn-primary mt-1 " style="margin-left:190px ;">Submit</button>
 
     </form>
-    <p> Resend OTP After <span id="countdowntimer">5 </span> Seconds</p>
+    <p> Resend OTP After <span id="countdowntimer">60 </span> Seconds</p>
     <a id="resendbtn" href="/user/resendOtp/{{phone}}" class="resend" style="display: none;">
         Resend OTP
         <i class="fa fa-caret-right"></i>
@@ -159,7 +159,7 @@ button.resend i {
 
 
 <script>
-    var timeleft = 5;
+    var timeleft = 60;
     var downloadTimer = setInterval(function () {
         timeleft--;
         document.getElementById("countdowntimer").textContent = timeleft;
@@ -178,7 +178,7 @@ button.resend i {
         div.appendChild(btn)
         document.body.appendChild(div)
 
-    }, 5000)
+    }, 60000)
 
 
 
