@@ -16,8 +16,10 @@ exports.addtoCart=(req,res)=>{
    console.log(prodId)
    cartHelpers.addToCart(prodId,usrId).then(()=>{
      // res.redirect("/")
-    //  res.json({status:true})
+     res.json({status:true})
      // res.redirect("/")
+   }).catch(()=>{
+    res.json({status:false})
    })
 
 }

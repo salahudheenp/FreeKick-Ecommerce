@@ -25,6 +25,7 @@
     "multer": "^1.4.5-lts.1",
     "paypal-rest-sdk": "^1.8.1",
     "razorpay": "^2.8.3",
+    "sweetalert": "^2.1.2",
     "twilio": "^3.83.1"
   },
   "devDependencies": {

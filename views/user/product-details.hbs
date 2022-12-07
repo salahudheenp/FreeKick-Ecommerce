@@ -66,9 +66,13 @@
 							{{!-- <input type="number" placeholder="0"> --}}
 						</form>
 						{{#if product.stock}}
-						<a href="/user/add-to-cart/{{this._id}}" onclick="sweetalertclick()" type="button" class="cart-btn" id="addcrt"><i
-								class="fas fa-shopping-cart"></i> Add to Cart</a>
-						{{else}}
+						{{#if users}}
+						<button class="boxed-btn" id="btn" onclick="addtocart('{{product._id}}')"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                         {{else}}
+						<a href="/user/login" type="button" onclick="sweetalertclick()" class="cart-btn"
+							id="addcrt"><i class="fas fa-shopping-cart"></i> Add to Cart</a> 
+                         {{/if}}
+						 {{else}}
 						<a href="#" class="cart-btn"><i class="fas fa-shopping-cart"></i>Out of stock</a>
 						{{/if}}
 						{{!-- <a href="/user/add-to-cart/{{product._id}}" type="button" onclick="sweetalertclick()" class="cart-btn" id="addcrt"><i class="fas fa-shopping-cart"></i> Add to Cart</a> --}}
@@ -209,6 +213,7 @@
 
 <script>
 	
+	
 		var ProductImg = document.getElementById('ProductImg');
 		var SmallImg = document.getElementsByClassName('small-img');
 	     SmallImg[0].onclick = function () {
@@ -225,17 +230,36 @@
 		};
 
 
-	 function sweetalertclick() {
-			swal({
-				title: "Add To cart ",
-				type: 'success',
-				text: "congratulations!! ",
-				icon: "success",
-				confirmButtonColor: "#318a2c",
-				confirmButtonText: "Ok",
-				closeOnConfirm: false
-			})
-		}
 
 	
 </script>
+<style>
+	 .boxed-btn {
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.boxed-btn, a.bordered-btn, a.cart-btn {
+    border-radius: 50px;
+}
+.boxed-btn {
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    background-color: #F28123;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.boxed-btn {
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.boxed-btn:hover {
+  background-color: #051922;
+  color: #F28123;
+}
+
+</style>

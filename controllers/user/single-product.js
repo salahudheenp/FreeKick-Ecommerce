@@ -13,10 +13,11 @@ exports.getSingleProduct=(req,res)=>{
 }
 
 exports.getAllProducts=(req,res)=>{
+   let users = req.session.user
    productHelpers.getAllProducts().then((products) => {
       // let category= await productHelpers.getCategory()
       // console.log(category,'77777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777');
-      res.render("user/shop", { user: true, products});
+      res.render("user/shop", { user: true, users, products});
    })
 
    

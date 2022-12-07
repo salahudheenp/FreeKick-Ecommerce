@@ -73,8 +73,13 @@
 
 
                 {{#if this.stock}}
-                <a href="/user/add-to-cart/{{this._id}}" onclick="sweetalertclick()" type="button" class="cart-btn" id="addcrt"><i
+                {{#if users}}
+                                <button class="boxed-btn" id="btn" onclick="addtocart('{{this._id}}')"><i class="fas fa-shopping-cart"></i> Add to
+                                    Cart</button>
+                 {{else}}
+                <a href="/user/login" type="button"  class="cart-btn" id="addcrt"><i
                         class="fas fa-shopping-cart"></i> Add to Cart</a>
+                {{/if}}
                 {{else}}
                 <a href="#" class="cart-btn"><i class="fas fa-shopping-cart"></i>Out of stock</a>
                 {{/if}}
@@ -192,4 +197,34 @@
         })
     }
 </script>
+<style>
+     .boxed-btn {
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.boxed-btn, a.bordered-btn, a.cart-btn {
+    border-radius: 50px;
+}
+.boxed-btn {
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    background-color: #F28123;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.boxed-btn {
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.boxed-btn:hover {
+  background-color: #051922;
+  color: #F28123;
+}
+
+</style>
 

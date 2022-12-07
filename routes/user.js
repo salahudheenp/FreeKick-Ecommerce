@@ -72,7 +72,7 @@ router.get('/delete-wish-product/:id',wishlistManagement.deleteWishlist)
 
 router.get("/cart",middlewares.verifyLogin,cartManagement.getCart)
 
-router.get("/add-to-cart/:id", middlewares.verifyLogin, cartManagement.addtoCart)
+router.get("/add-to-cart/:id", middlewares.verifyLogin,cartManagement.addtoCart)
 
 router.post('/change-product-quantity',cartManagement.productQuantity)
 

@@ -152,6 +152,39 @@ function editCategory(categoryId, categoryName) {
 }
 
 
+// ad to cart
+function addtocart(prodId) {
+
+
+
+    $.ajax({
+        url: '/user/add-to-cart/' + prodId,
+        method: 'get',
+        success: (response) => {
+            swal({
+                title: "Add To Cart",
+                type: 'success',
+                text: "congratulations!! ",
+                icon: "success",
+                confirmButtonColor: "#318a2c",
+                confirmButtonText: "ok",
+                closeOnConfirm: false
+            })
+            console.log(response)
+           
+
+
+
+        }
+
+    })
+
+
+
+
+}
+
+
 
 //USER ORDER CANCEL
 function cancelOrder(orderId, prodId) {

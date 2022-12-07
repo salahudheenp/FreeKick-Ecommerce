@@ -27,6 +27,8 @@ addToCart: (prodId, usrId) => {
                         }
                     ).then(() => {
                         resolve()
+                    }).catch(()=>{
+                        reject()
                     })
 
             } else {
@@ -35,6 +37,8 @@ addToCart: (prodId, usrId) => {
                         $push: { products: proObj }
                     }).then((response) => {
                         resolve()
+                    }).catch(()=>{
+                        reject()
                     })
 
 
@@ -49,6 +53,8 @@ addToCart: (prodId, usrId) => {
             }
             db.get().collection(collections.CART_COLLECTION).insertOne(cartObj).then((response) => {
                 resolve(response)
+            }).catch(()=>{
+                reject()
             })
         }
     })
