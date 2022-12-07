@@ -73,9 +73,12 @@ app.use("/admin", adminRouter);
 
  app.get("/", (req, res) => {
    if (req.session.loggedIn){
+    console.log("============================================================================");
      res.redirect("/user")
    }else{
      productHelpers.getAllProducts().then((product) => {
+       console.log("============================================================================",product);
+
        res.render("index", {  product });
      })
    }

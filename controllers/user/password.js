@@ -90,7 +90,7 @@ module.exports={
                     channel: 'sms'
                 }).then((data) => {
                     req.session.user = response.user;
-                    res.render('user/forgot-otp-verify', { phone, not: true, login: true })
+                    res.render('user/password', { phone, not: true, login: true })
                 }).catch((err) => {
                     console.log(err);
                 })

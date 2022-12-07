@@ -77,11 +77,10 @@ function signUpValidate() {
 
 
 
-// zoom in product details
-
+//IMAGE ZOOM
 $(document).ready(function () {
     $(".block__pic").imagezoomsl({
-        zoomrange: [3, 3]
+        zoomrange: [2, 2]
     });
 });
 

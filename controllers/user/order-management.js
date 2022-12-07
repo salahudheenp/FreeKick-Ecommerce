@@ -31,7 +31,7 @@ exports.getOrderProducts=async (req,res)=>{
 
   console.log(coupon,'vanoooooooooooooooooooooooooooooooooooooooooooooooooooooootttttttttttooooooooooooooooooooo');
 
-  // console.log(totalPrice,"***************************************()>>>>>>>>>>>>>>>>>>>",totalOfferPrice);
+  console.log(totalPrice,"***************************************()>>>>>>>>>>>>>>>>>>>",totalOfferPrice);
   res.render('user/order-products', { products, users: req.session.user, totalPrice, totalOfferPrice ,coupon})
 
 }

@@ -40,7 +40,7 @@
 		
 			
 			<div class="col-md-5">
-				<div class="single-product-img" >
+				<div class="single-product-img lens" id="img-container"  >
 					<img src="{{product.images.[0]}}" alt="" class="block__pic" id="ProductImg">
 
 
@@ -63,9 +63,9 @@
 					<p>{{product.description}}</p>
 					<div class="single-product-form">
 						<form action="index.html">
-							<input type="number" placeholder="0">
+							{{!-- <input type="number" placeholder="0"> --}}
 						</form>
-						{{#if this.stock}}
+						{{#if product.stock}}
 						<a href="/user/add-to-cart/{{this._id}}" onclick="sweetalertclick()" type="button" class="cart-btn" id="addcrt"><i
 								class="fas fa-shopping-cart"></i> Add to Cart</a>
 						{{else}}

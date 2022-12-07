@@ -1,5 +1,5 @@
 var db = require("../config/connection");
-var collection = require("../config/collections");
+// var collection = require("../config/collections");
 const collections = require("../config/collections");
 const { response } = require("../app");
 
@@ -7,9 +7,8 @@ const ObjectId = require("mongodb").ObjectID
 module.exports = {
   addproduct: (product,urls, callback) => {
     product.price = Number(product.price),
-      product.offerprice = Number(product.offerprice),
+      product.offerPrice = Number(product.price),
       product.stock = Number(product.stock)
-
     product.images = urls
     console.log(product,'777777777777777777777777777777777777777777');
     db.get()
@@ -23,7 +22,7 @@ module.exports = {
     return new Promise(async (resolve, reject) => {
       let product = await db
         .get()
-        .collection(collection.PRODUCT_COLLECTION)
+        .collection(collections.PRODUCT_COLLECTION)
         .find()
         .toArray();
       resolve(product);
@@ -82,7 +81,7 @@ module.exports = {
 
   getProductImage:(proId) => {
     return new Promise((resolve, reject) => {
-      db.get().collection(collection.PRODUCT_COLLECTION).findOne({ _id:ObjectId(proId) }).then((response) => {
+      db.get().collection(collections.PRODUCT_COLLECTION).findOne({ _id:ObjectId(proId) }).then((response) => {
         resolve(response)
       })
     })
